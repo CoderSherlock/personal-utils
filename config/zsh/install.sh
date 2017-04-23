@@ -38,17 +38,21 @@ check_installed () {
 }
 
 
-DEPS=(i3 rofi)
+DEPS=(zsh autojump git)
 for dep in ${DEPS[@]}
 do
 	check_installed $dep
 done
 
-# copy config file to default config directory
-cmd="cp -f ./config ~/.config/i3/config"
+cmd="git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh"
+execute "$cmd"
+cmd="chsh -s /bin/zsh"
 execute "$cmd"
 
-printf "\n\n${GREEN}Finished i3wm configuration, please press following keys${NORMAL}\n"
-printf "\$mod + shift + r\n"
 
+# copy config file to default config directory
+cmd="cp -f ./zshrc ~/.zshrc"
+execute "$cmd"
 
+printf "\n\n${GREEN}Finished zsh configuration, please use following command to reload${NORMAL}\n"
+printf "source ~/.zshrc\n"
