@@ -1,0 +1,118 @@
+" basic {
+	set nocompatible
+	syntax on
+	set number
+	set relativenumber
+	set ruler
+	" set cursorline	" This adding cursorline at current edit line, so
+	" fancy not efficient, so I just erase this
+	set nobackup
+	set autochdir
+
+	set hlsearch	" highlight search
+	set incsearch	" show seach proceed
+" }
+
+
+
+" cursor {
+	set shiftwidth=4
+	set softtabstop=4
+	set tabstop=4
+" }
+
+
+
+" fold {
+	set foldenable
+	set foldlevel=1
+	set foldmethod=manual
+	set foldclose=all
+" }
+
+" UI {
+" }
+
+" plugins {
+	set rtp+=~/.vim/bundle/Vundle.vim
+	call vundle#begin()
+	Plugin 'VundleVim/Vundle.vim'
+
+	" plugins
+	Plugin 'majutsushi/tagbar'
+	Plugin 'scrooloose/nerdtree'
+	Plugin 'scrooloose/syntastic'
+	Plugin 'bling/vim-airline'
+	Plugin 'vim-airline/vim-airline-themes'
+	Plugin 'Xuyuanp/nerdtree-git-plugin'
+	Plugin 'kien/ctrlp.vim'
+	Plugin 'valloric/youcompleteme'
+	Plugin 'scrooloose/nerdcommenter'
+
+	call vundle#end()
+	filetype plugin indent on
+" }
+
+
+" keymap {
+	nmap <F2> :NERDTreeToggle<CR>
+	nmap <F3> :TagbarToggle<CR>
+	nmap <S-F3> :!ctags -R --fields=+iaS --extra=+q .<CR><CR>  
+" }
+
+
+" vim-airline {
+	let g:airline_powerline_fonts = 1
+	let g:airline_theme='papercolor'
+
+	let g:airline#extensions#tabline#enabled = 1	" Start Upper Tabline
+
+
+" }
+
+" NERDTree {
+	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" }
+
+
+" Syntastic {
+	set statusline+=%#warningmsg#
+	set statusline+=%{SyntasticStatuslineFlag()}
+	set statusline+=%*
+
+	let g:syntastic_always_populate_loc_list = 0
+	let g:syntastic_auto_loc_list = 1
+	let g:syntastic_check_on_open = 1
+	let g:syntastic_check_on_wq = 1
+" }
+
+
+" youcompleteme {
+	let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/.ycm_extra_conf.py'  
+" }
+
+
+" nerdcommenter {
+	" Add spaces after comment delimiters by default
+	let g:NERDSpaceDelims = 1
+
+	" Use compact syntax for prettified multi-line comments
+	let g:NERDCompactSexyComs = 1
+
+	" Align line-wise comment delimiters flush left instead of following code
+	" indentation
+	let g:NERDDefaultAlign = 'left'
+
+	" Set a language to use its alternate delimiters by default
+	let g:NERDAltDelims_java = 1
+
+	" " Add your own custom formats or override the defaults
+	let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+	" Allow commenting and inverting empty lines (useful when commenting a
+	" region)
+	let g:NERDCommentEmptyLines = 1
+
+	" " Enable trimming of trailing whitespace when uncommenting
+	let g:NERDTrimTrailingWhitespace = 1
+" }
