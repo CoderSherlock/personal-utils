@@ -38,7 +38,7 @@ check_installed () {
 }
 
 
-DEPS=(i3 rofi)
+DEPS=(i3 rofi scrot)
 for dep in ${DEPS[@]}
 do
 	check_installed $dep
