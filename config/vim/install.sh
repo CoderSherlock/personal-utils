@@ -38,7 +38,7 @@ check_installed () {
 }
 
 
-DEPS=(vim git exuberant-ctags)
+DEPS=(vim git exuberant-ctags silversearcher-ag)
 for dep in ${DEPS[@]}
 do
 	check_installed $dep

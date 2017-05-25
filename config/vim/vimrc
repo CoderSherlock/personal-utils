@@ -48,6 +48,10 @@
 	Plugin 'kien/ctrlp.vim'
 	Plugin 'valloric/youcompleteme'
 	Plugin 'scrooloose/nerdcommenter'
+	Plugin 'rking/ag.vim'	
+	Plugin 'dyng/ctrlsf.vim'
+	Plugin 'altercation/vim-colors-solarized'
+	Plugin 'raimondi/delimitmate'
 
 	call vundle#end()
 	filetype plugin indent on
