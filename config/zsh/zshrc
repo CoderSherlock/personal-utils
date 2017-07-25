@@ -91,3 +91,5 @@ alias -s cpp=vim
 alias -s py=vim
 
 alias nautilus="nautilus --no-desktop . &"
+
+export TERM=xterm-256color

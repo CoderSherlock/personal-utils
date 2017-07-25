@@ -42,8 +42,7 @@
 	Plugin 'majutsushi/tagbar'
 	Plugin 'scrooloose/nerdtree'
 	Plugin 'scrooloose/syntastic'
-	Plugin 'bling/vim-airline'
-	Plugin 'vim-airline/vim-airline-themes'
+	Plugin 'itchyny/lightline.vim'
 	Plugin 'Xuyuanp/nerdtree-git-plugin'
 	Plugin 'kien/ctrlp.vim'
 	Plugin 'valloric/youcompleteme'
@@ -66,12 +65,18 @@
 
 
 " vim-airline {
-	let g:airline_powerline_fonts = 1
-	let g:airline_theme='papercolor'
+"     let g:airline_powerline_fonts = 1
+"     let g:airline_theme='papercolor'
+"
+"     let g:airline#extensions#tabline#enabled = 1	Start Upper Tabline
+"
+"
+" }
 
-	let g:airline#extensions#tabline#enabled = 1	" Start Upper Tabline
-
-
+" lightline {
+	let g:lightline = {
+	      \ 'colorscheme': 'powerline',
+	      \ }
 " }
 
 " NERDTree {
