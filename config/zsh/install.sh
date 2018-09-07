@@ -54,5 +54,13 @@ execute "$cmd"
 cmd="cp -f ./zshrc ~/.zshrc"
 execute "$cmd"
 
+# install to external plugins
+# syntax-highlighting
+cmd="git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+execute "$cmd"
+# autocomplete-recommand
+cmd="git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+execute "$cmd"
+
 printf "\n\n${GREEN}Finished zsh configuration, please use following command to reload${NORMAL}\n"
 printf "source ~/.zshrc\n"
