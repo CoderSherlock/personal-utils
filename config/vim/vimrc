@@ -2,7 +2,7 @@
 	set nocompatible
 	syntax on
 	set number
-	set relativenumber
+	" set relativenumber
 	set ruler
 	" set cursorline	" This adding cursorline at current edit line, so
 	" fancy not efficient, so I just erase this
@@ -11,6 +11,7 @@
 
 	set hlsearch	" highlight search
 	set incsearch	" show seach proceed
+	set bs = 2		" make backspace working ??
 " }
 
 
@@ -30,30 +31,30 @@
 	set foldclose=all
 " }
 
-" UI {
-" }
 
 " plugins {
-	set rtp+=~/.vim/bundle/Vundle.vim
-	call vundle#begin()
-	Plugin 'VundleVim/Vundle.vim'
-
+	call plug#begin('~/.vim/plugged')
+	
 	" plugins
-	Plugin 'majutsushi/tagbar'
-	Plugin 'scrooloose/nerdtree'
-	Plugin 'scrooloose/syntastic'
-	Plugin 'itchyny/lightline.vim'
-	Plugin 'Xuyuanp/nerdtree-git-plugin'
-	Plugin 'kien/ctrlp.vim'
-	Plugin 'valloric/youcompleteme'
-	Plugin 'scrooloose/nerdcommenter'
-	Plugin 'rking/ag.vim'	
-	Plugin 'dyng/ctrlsf.vim'
-	Plugin 'altercation/vim-colors-solarized'
-	Plugin 'raimondi/delimitmate'
+	Plug 'majutsushi/tagbar'
+	Plug 'scrooloose/nerdtree'
 
-	call vundle#end()
-	filetype plugin indent on
+	" Plug 'scrooloose/syntastic'    Static grammer check Github@liuchengxu said this is out date, replaced with following one.
+	Plug 'w0rp/ale'
+
+	Plug 'itchyny/lightline.vim'
+	Plug 'Xuyuanp/nerdtree-git-plugin'
+	Plug 'kien/ctrlp.vim'
+	" Plug 'valloric/youcompleteme'	Auto code completer, very powerful but ca
+	Plug 'scrooloose/nerdcommenter'
+	Plug 'rking/ag.vim'	
+	Plug 'dyng/ctrlsf.vim'
+	Plug 'altercation/vim-colors-solarized'
+	Plug 'raimondi/delimitmate'
+	Plug 'liuchengxu/space-vim-dark'
+
+	call plug#end()
+
 " }
 
 
@@ -61,6 +62,14 @@
 	nmap <F2> :NERDTreeToggle<CR>
 	nmap <F3> :TagbarToggle<CR>
 	nmap <S-F3> :!ctags -R --fields=+iaS --extra=+q .<CR><CR>  
+" }
+ 
+" UI {
+	color space-vim-dark
+	hi Comment cterm=italic
+	hi Normal     ctermbg=NONE guibg=NONE
+	hi LineNr     ctermbg=NONE guibg=NONE
+	hi SignColumn ctermbg=NONE guibg=NONE
 " }
 
 
@@ -85,14 +94,33 @@
 
 
 " Syntastic {
-	set statusline+=%#warningmsg#
-	set statusline+=%{SyntasticStatuslineFlag()}
-	set statusline+=%*
+	" set statusline+=%#warningmsg#
+	" set statusline+=%{SyntasticStatuslineFlag()}
+	" set statusline+=%*
+    "
+	" let g:syntastic_always_populate_loc_list = 0
+	" let g:syntastic_auto_loc_list = 1
+	" let g:syntastic_check_on_open = 1
+	" let g:syntastic_check_on_wq = 1
+" }
 
-	let g:syntastic_always_populate_loc_list = 0
-	let g:syntastic_auto_loc_list = 1
-	let g:syntastic_check_on_open = 1
-	let g:syntastic_check_on_wq = 1
+
+" ale {
+	let g:ale_set_balloon = 1
+	
+	let g:ale_set_highlights = 0
+	let g:ale_fix_on_save = 1
+	let g:ale_echo_msg_format = '[#%linter%#] %s [%severity%]'
+	let g:ale_statusline_format = ['E•%d', 'W•%d', 'OK']
+
+	let g:ale_sign_error = '•'
+	let g:ale_sign_warning = '•'
+	let g:ale_echo_msg_error_str = '✹ Error'
+	let g:ale_echo_msg_warning_str = '⚠ Warning'
+
+	nmap <Leader>en <Plug>(ale_next)
+	nmap <Leader>ep <Plug>(ale_previous)
+	nnoremap <Leader>ts :ALEToggle<CR>
 " }
 
 
