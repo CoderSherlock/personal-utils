@@ -22,7 +22,7 @@ execute () {
 }
 
 install_dep () {
-	install_cmd="sudo apt-get install $1"
+	install_cmd="sudo apt install $1"
 	printf "${YELLOW}We are going to install $1 on your computer ...${NORMAL}\n"
 	execute "$install_cmd"
 }
