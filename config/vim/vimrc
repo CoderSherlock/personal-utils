@@ -11,7 +11,7 @@
 
 	set hlsearch	" highlight search
 	set incsearch	" show seach proceed
-	set bs = 2		" make backspace working ??
+	set bs=2		" make backspace working ??
 " }
 
 
@@ -39,19 +39,22 @@
 	Plug 'majutsushi/tagbar'
 	Plug 'scrooloose/nerdtree'
 
-	" Plug 'scrooloose/syntastic'    Static grammer check Github@liuchengxu said this is out date, replaced with following one.
+	" Plug 'scrooloose/syntastic'			"Static grammer check Github@liuchengxu said this is out date, replaced with following one.
 	Plug 'w0rp/ale'
 
 	Plug 'itchyny/lightline.vim'
 	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'kien/ctrlp.vim'
-	" Plug 'valloric/youcompleteme'	Auto code completer, very powerful but ca
+	" Plug 'valloric/youcompleteme'			"Auto code completer, very powerful but heavy. Now I change to completer, hope it works fine.
+	Plug 'maralla/completor.vim'
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'rking/ag.vim'	
 	Plug 'dyng/ctrlsf.vim'
 	Plug 'altercation/vim-colors-solarized'
 	Plug 'raimondi/delimitmate'
 	Plug 'liuchengxu/space-vim-dark'
+
+	Plug 'easymotion/vim-easymotion'
 
 	call plug#end()
 
@@ -123,12 +126,16 @@
 	nnoremap <Leader>ts :ALEToggle<CR>
 " }
 
+" completer {
+	let g:completor_clang_binary = '/usr/bin/clang'
+" }
+
 
 " youcompleteme {
-	let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/.ycm_extra_conf.py'  
-	nnoremap <leader>gt :YcmCompleter GoTo<CR>
-	nnoremap <leader>gc :YcmCompleter GoToDeclaration<CR>
-	nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
+	" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/.ycm_extra_conf.py'
+	" nnoremap <leader>gt :YcmCompleter GoTo<CR>
+	" nnoremap <leader>gc :YcmCompleter GoToDeclaration<CR>
+	" nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
 " }
 
 
