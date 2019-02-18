@@ -41,7 +41,7 @@
 	Plug 'majutsushi/tagbar'
 	Plug 'scrooloose/nerdtree'
 
-	" Plug 'scrooloose/syntastic'    Static grammer check Github@liuchengxu said this is out date, replaced with following one.
+	" Plug 'scrooloose/syntastic'			"Static grammer check Github@liuchengxu said this is out date, replaced with following one.
 	Plug 'w0rp/ale'
 
 	Plug 'itchyny/lightline.vim'
@@ -57,6 +57,8 @@
 	Plug 'dracula/vim', { 'as': 'dracula' }
 	Plug 'Shougo/unite.vim'
 	" Plug 'devjoe/vim-codequery'
+
+	Plug 'easymotion/vim-easymotion'
 
 	call plug#end()
 
@@ -126,6 +128,10 @@
 	nmap <Leader>en <Plug>(ale_next)
 	nmap <Leader>ep <Plug>(ale_previous)
 	nnoremap <Leader>ts :ALEToggle<CR>
+" }
+
+" completer {
+	let g:completor_clang_binary = '/usr/bin/clang'
 " }
 
 
