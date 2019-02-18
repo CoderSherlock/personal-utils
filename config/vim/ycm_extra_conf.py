@@ -18,7 +18,8 @@ BASE_FLAGS = [
         '-xc++',
         '-I/usr/lib/',
         '-I/usr/include/',
-        '-I/usr/local/Trolltech/Qt-4.7.4/include/'
+        '-I/usr/local/Trolltech/Qt-4.7.4/include/',
+        '-I/home/pengzhan/Github/dlib-exper'
         ]
 
 SOURCE_EXTENSIONS = [  
