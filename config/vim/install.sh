@@ -38,7 +38,7 @@ check_installed () {
 }
 
 
-DEPS=(vim git exuberant-ctags silversearcher-ag)
+DEPS=(vim git exuberant-ctags silversearcher-ag curl cmake)
 for dep in ${DEPS[@]}
 do
 	check_installed $dep
@@ -48,8 +48,9 @@ done
 cmd="cp -f ./vimrc ~/.vimrc"
 execute "$cmd"
 
-# install vundle
-cmd="git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim"
+# install Plug
+cmd="curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 execute "$cmd"
 
 printf "\n\n${GREEN}Finished vim configuration, please follow these steps${NORMAL}\n"
