@@ -38,13 +38,13 @@ check_installed () {
 }
 
 
-DEPS=(zsh autojump git)
+DEPS=(zsh autojump git curl)
 for dep in ${DEPS[@]}
 do
 	check_installed $dep
 done
 
-cmd="git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh"
+cmd='sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
 execute "$cmd"
 cmd="chsh -s /bin/zsh"
 execute "$cmd"
