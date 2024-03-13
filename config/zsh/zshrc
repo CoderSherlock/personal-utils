@@ -51,7 +51,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git last-working-dir catimg autojump pip history extract zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git last-working-dir catimg pip history extract zsh-syntax-highlighting zsh-autosuggestions fzf gcloud mosh kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -88,3 +88,30 @@ source $ZSH/oh-my-zsh.sh
 alias nautilus="nautilus --no-desktop . &"
 
 export TERM=xterm-256color
+
+#unsetopt correct_all
+#setopt correct
+
+# Start tmux if has tmux/in active/not in tmux
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux attach
+fi
+
+zstyle ':completion:*' menu yes select
+zstyle ':completion::complete:*' use-cache 1        #enables completion caching
+zstyle ':completion::complete:*' cache-path ~/.zsh/cache
+# fix lag in google3
+zstyle ':completion:*' users root $USER
+autoload -Uz compinit && compinit -i
+
+#Enables history saving
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=$HISTSIZE
+setopt appendhistory
+setopt share_history        #share history between multiple instances of zsh
+
+# Import local sensitive configurations
+if [[ -f ~/.zshrc.local ]]; then
+  source ~/.zshrc.local
+fi
