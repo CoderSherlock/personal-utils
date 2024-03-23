@@ -38,7 +38,7 @@ check_installed () {
 }
 
 
-DEPS=(zsh autojump git curl)
+DEPS=(zsh autojump git curl fzf)
 for dep in ${DEPS[@]}
 do
 	check_installed $dep
@@ -51,7 +51,7 @@ execute "$cmd"
 
 
 # copy config file to default config directory
-cmd="cp -f ./zshrc ~/.zshrc"
+cmd="ln -sf $(pwd)/zshrc ~/.zshrc"
 execute "$cmd"
 
 # install to external plugins
