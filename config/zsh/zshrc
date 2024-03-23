@@ -95,7 +95,11 @@ export TERM=xterm-256color
 
 # Start tmux if has tmux/in active/not in tmux
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux attach
+  if tmux has-session; then
+    exec tmux attach
+  else
+    exec tmux new-session
+  fi
 fi
 
 zstyle ':completion:*' menu yes select
