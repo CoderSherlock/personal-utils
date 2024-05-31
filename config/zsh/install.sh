@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #################################################################
-#	I3 configuredinstall										#
+#	ZSH configuredinstall										#
 #	Author: Pengzhan Hao										#
 #																#
 #	This bash script is used for install i3 and configure it.	#
@@ -38,7 +38,7 @@ check_installed () {
 }
 
 
-DEPS=(zsh autojump git curl fzf)
+DEPS=(zsh autojump git curl fzf bat)
 for dep in ${DEPS[@]}
 do
 	check_installed $dep
@@ -60,6 +60,12 @@ cmd="git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CU
 execute "$cmd"
 # autocomplete-recommand
 cmd="git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+execute "$cmd"
+# you-should-use
+cmd="git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:~/.oh-my-zsh/custom}/plugins/you-should-use"
+execute "$cmd"
+# bat
+cmd="git clone https://github.com/fdellwing/zsh-bat.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-bat"
 execute "$cmd"
 
 printf "\n\n${GREEN}Finished zsh configuration, please use following command to reload${NORMAL}\n"

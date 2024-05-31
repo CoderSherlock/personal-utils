@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #################################################################
-#	I3 configuredinstall										#
+#	VIM configuredinstall										#
 #	Author: Pengzhan Hao										#
 #																#
 #	This bash script is used for install i3 and configure it.	#
