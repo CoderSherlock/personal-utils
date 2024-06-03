@@ -62,7 +62,7 @@ execute "$cmd"
 cmd="git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
 execute "$cmd"
 # you-should-use
-cmd="git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:~/.oh-my-zsh/custom}/plugins/you-should-use"
+cmd="git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use"
 execute "$cmd"
 # bat
 cmd="git clone https://github.com/fdellwing/zsh-bat.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-bat"
