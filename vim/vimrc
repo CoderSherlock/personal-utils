@@ -1,0 +1,153 @@
+" ----------------------------------------------------------------------------
+"                            VIM CONFIGURATION
+" ----------------------------------------------------------------------------
+" This configuration is designed to be modern, fast, and powerful.
+" It uses vim-plug for plugin management and coc.nvim for LSP support.
+
+" ----------------------------------------------------------------------------
+"                            PLUGINS (vim-plug)
+" ----------------------------------------------------------------------------
+call plug#begin('~/.local/share/nvim/site/plugged')
+
+" --- Core ---
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" --- UI & Appearance ---
+Plug 'itchyny/lightline.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'altercation/vim-colors-solarized'
+Plug 'liuchengxu/space-vim-dark'
+Plug 'vim-airline/vim-airline-themes'
+
+" --- File Navigation ---
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" --- Git Integration ---
+Plug 'tpope/vim-fugitive'
+
+" --- Syntax & Languages ---
+Plug 'sheerun/vim-polyglot'
+
+" --- Quality of Life ---
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-surround'
+Plug 'easymotion/vim-easymotion'
+Plug 'raimondi/delimitmate'
+
+call plug#end()
+
+" ----------------------------------------------------------------------------
+"                            GENERAL SETTINGS
+" ----------------------------------------------------------------------------
+set nocompatible            " Use Vim settings, not Vi settings
+
+syntax on                   " Enable syntax highlighting
+set number                  " Show line numbers
+set relativenumber          " Show relative line numbers
+set ruler                   " Show cursor position
+set nobackup                " Don't create backup files
+set nowritebackup           " Don't create backup files during writing
+set noswapfile              " Don't create swap files
+set autochdir               " Automatically change directory to the current file
+
+" --- Search ---
+set hlsearch                " Highlight search results
+set incsearch               " Show search results as you type
+set ignorecase              " Ignore case when searching
+set smartcase               " Don't ignore case if search pattern contains uppercase letters
+
+" --- Tabs & Indentation ---
+set expandtab               " Use spaces instead of tabs
+set shiftwidth=4            " Number of spaces to use for auto-indent
+set softtabstop=4           " Number of spaces that a <Tab> counts for
+set tabstop=4               " Number of spaces that a <Tab> is displayed as
+
+" --- UI ---
+set termguicolors           " Enable true colors in the terminal
+set splitbelow              " Open new horizontal splits below the current window
+set splitright              " Open new vertical splits to the right of the current window
+
+" ----------------------------------------------------------------------------
+"                                KEY MAPPINGS
+" ----------------------------------------------------------------------------
+let mapleader = " "         " Set the leader key to space
+
+" --- NERDTree ---
+nmap <leader>n :NERDTreeToggle<CR>
+
+" --- fzf ---
+nmap <leader>ff <cmd>Files<CR>
+nmap <leader>fg <cmd>GFiles<CR>
+nmap <leader>fb <cmd>Buffers<CR>
+nmap <leader>fr <cmd>Rg<CR>
+
+" --- coc.nvim ---
+" Go to definition, declaration, implementation, etc.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Show documentation in a preview window
+nmap <silent> K <Plug>(coc-hover)
+
+" Rename symbol
+nmap <leader>rn <Plug>(coc-rename)
+
+" Format code
+nmap <leader>f <Plug>(coc-format-selected)
+vmap <leader>f <Plug>(coc-format-selected)
+
+" Show diagnostics
+nmap <leader>d <Plug>(coc-diagnostic-info)
+
+" Navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" --- vim-easymotion ---
+nmap <leader>s <Plug>(easymotion-s2)
+vmap <leader>s <Plug>(easymotion-s2)
+
+" --- Other ---
+" Clear search highlight
+nmap <leader><space> :nohlsearch<CR>
+
+" ----------------------------------------------------------------------------
+"                            PLUGIN CONFIGURATIONS
+" ----------------------------------------------------------------------------
+
+" --- lightline ---
+let g:lightline = {
+      \ 'colorscheme': 'dracula',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ }
+      \ }
+
+" --- NERDTree ---
+let g:NERDTreeGitStatusWithFlags = 1
+
+" --- coc.nvim ---
+" Use tab for trigger completion with characters
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "<S-TAB>"
+
+" ----------------------------------------------------------------------------
+"                                 APPEARANCE
+" ----------------------------------------------------------------------------
+colorscheme dracula
+hi Comment cterm=italic
+hi Normal ctermbg=NONE guibg=NONE
+hi LineNr ctermbg=NONE guibg=NONE
+hi SignColumn ctermbg=NONE guibg=NONE

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# This is a Git pre-commit hook that cleans up Python cache files
+# before a commit.
+
+echo "Cleaning up Python cache files..."
+
+# Find and delete all .pyc and .pyo files
+find . -type f -name "*.py[co]" -delete
+
+# Find and delete all __pycache__ directories
+find . -type d -name "__pycache__" -exec rm -r {} +
+
+echo "Done."
